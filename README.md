@@ -30,6 +30,7 @@ When user
 
 
 Stretch Goal
-Quote-Page-There will be a floating text there that has the first quote. If user clicks on the quote it will expand.
+Quote-Page
+- There will be a floating text there that has the first quote. If user clicks on the quote it will expand.
 
 
