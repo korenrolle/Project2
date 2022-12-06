@@ -4,7 +4,7 @@ Our project is called Meliora which means positivity in latin. It focuses on ins
 
 ## Wireframes
 
-Links to your hand drawn or digital wireframes.
+![Alt text](../../../../Desktop/Screen%20Shot%202022-12-06%20at%205.35.56%20AM.png)
 
 ### MVP User Stories
 
