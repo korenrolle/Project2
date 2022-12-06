@@ -4,15 +4,15 @@ import { useEffect, useState } from "react"
 
 const Home = (props) => {
 
-    const [character, setCharacter] = useState(null)
+    const [quote, setQuote] = useState(null)
 
     async function fetchId() {
         try {
-            const response = await fetch (`https://rickandmortyapi.com/api/character/1`)
-            const characterData = await response.json()
-            console.log(characterData)
+            const response = await fetch (`https://zenquotes.io/api/today`)
+            const quoteData = response.json()
+            console.log(quoteData)
 
-            setCharacter(characterData)
+            setQuote(quoteData)
             
         } catch (err) {
             console.log(err)
@@ -25,13 +25,10 @@ const Home = (props) => {
 
     return (
         <div>
-           { character ? 
-           <>
-           <img src={character.image} alt='quote' />
-           <h2>{character.name}</h2>
-           </>
-            : null}
+            <h2>Hello there</h2>
+           {quote ? <img src={quote.media_type} alt='image'/> : null} 
         </div>
-)
+    )
 }
+
 export default Home
