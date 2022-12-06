@@ -7,6 +7,5 @@ import Author from '../Components/Author';
 export default function author() {
   return (
       <p>Hello People</p>
-{/* <img src={author.image} alt={author.name} /> */}
   )
 };
