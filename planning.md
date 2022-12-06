@@ -4,7 +4,7 @@ Our project is called Meliora which means positivity in latin. It focuses on ins
 
 ## Wireframes
 
-![Alt text](../../../../Desktop/Screen%20Shot%202022-12-06%20at%205.35.56%20AM.png)
+https://ibb.co/3kDLKSB
 
 ### MVP User Stories
 
@@ -355,7 +355,7 @@ API- https://zenquotes.io/api/quotes
 
 ## Component Hierarchy
 
-![Comp Hierarchy](../../../../Desktop/Screen%20Shot%202022-12-05%20at%205.57.31%20PM.png)
+https://ibb.co/kx4zqrW
 
 Provide a link to a diagram of showing the React component hierarchy of your app.
 
