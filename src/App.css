@@ -1,5 +1,6 @@
 .App {
     text-align: center;
+    display: relative;
     background-color: #f9e009;
     width: 100vw;
     height: 100vw;
@@ -12,7 +13,7 @@
     margin-top: 20px;
     cursor: pointer;
   }
-
+  
   @media (prefers-reduced-motion: no-preference) {
     .App-Logo {
       animation: zoom-in-zoom-out 4s ease infinite;
@@ -30,3 +31,4 @@
       }
     }
   }
+  

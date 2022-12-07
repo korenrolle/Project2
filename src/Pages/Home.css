@@ -1,3 +1,17 @@
+
 .Home-Page {
-    margin-top: 20px;
+    margin-top: 140px;
 }
+
+.nav-home {
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    padding: 15px;
+    font-size: 2em;
+}
+
+.nav-home a {
+    color: #62a4ab;
+    text-decoration: none;
+  }
