@@ -8,7 +8,7 @@ import Character from './Pages/Character';
 function App() {
   return (
     <div className="App">
-      <h2>Hello</h2>
+      <h2>I'm Pickle Rick...Who are you?</h2>
       <Routes>
         <Route path="/" element={<Home />} />
         {/* <Route path="/Pages/Game" element={<Game />} /> */}
