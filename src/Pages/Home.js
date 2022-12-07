@@ -1,13 +1,16 @@
-import { useEffect, useState } from "react"
+import "./Home.css"
+import React, { useEffect, useState } from "react"
 import Iframe from "react-iframe"
-import ResponsivePlayer from "../Components/ResponsivePlayer"
+import Player from "../Components/Player"
+
+
 
 
 const Home = (props) => {
 
     return (
-        <div>
-            <ResponsivePlayer />
+        <div className="Home-Page">
+            <Player className="video"/>
         </div>
 )
 }
