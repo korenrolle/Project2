@@ -1,8 +1,8 @@
 import React from "react";
 import ReactPlayer from "react-player";
-import './ResponsivePlayer.css'
+import './Player.css'
 
-const ResponsivePlayer = (props) => {
+const Player = (props) => {
     return (
         <div className='player'>
             <ReactPlayer 
@@ -20,4 +20,4 @@ const ResponsivePlayer = (props) => {
     )
 }
 
-export default ResponsivePlayer
+export default Player
