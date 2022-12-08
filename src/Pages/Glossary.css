@@ -1,7 +1,8 @@
 .Glossary-Page {
     display: flex;
-    justify-content: right;
-    margin-right: 50px;
+    flex-direction: column;
+    align-items: center;
+    
     margin-top: 60px;
 }
 
@@ -36,6 +37,6 @@
 }
 
 .next-prev {
-    display: flex;
+
 }
 
