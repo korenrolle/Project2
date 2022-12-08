@@ -3,11 +3,15 @@ import React, { useEffect, useState } from "react"
 import { Routes, Route } from "react-router-dom"
 import GlossaryTile from "./GlossaryTile"
 
+
 const Glossary = (props) => {
 
     const [characterData, setCharacterData] = useState([])
     const [loading, setLoading] = useState(true)
-    const URL = "https://rickandmortyapi.com/api/character"
+    const [URL, setURL] = useState("https://rickandmortyapi.com/api/character")
+    const [currentPageUrl, setCurrentPageUrl] = useState(URL)
+    const [nextPageUrl, setNextPageUrl] = useState()
+    const [prevPageUrl, setPrevPageUrl] = useState()
     
     async function fetchData() {
         try {
@@ -15,8 +19,12 @@ const Glossary = (props) => {
             const response = await fetch (URL)
             const Data = await response.json()
             //console.log(Data.results)
+
             setLoading(false)
             fetchInfo(Data.results)
+            console.log(Data.info)
+            setNextPageUrl(Data.info.next)
+            setPrevPageUrl(Data.info.prev)
             
             
             
@@ -41,18 +49,28 @@ const Glossary = (props) => {
     }
     
     console.log(characterData)
-   
+    
 
     useEffect(() => {
         fetchData()
         
     }, [URL])
-
   
 
     return (
         <div className="Glossary-Page">
-            <GlossaryTile character={characterData} loading={loading}/>
+                <GlossaryTile character={characterData} loading={loading}/>
+                <div className="prev-next">
+                    { prevPageUrl && <button onClick={()=> {
+                        setCharacterData([])
+                        setURL(prevPageUrl)
+                    }}>Previous</button>}
+                    { nextPageUrl && <button onClick={()=> {
+                        setCharacterData([])
+                        setURL(nextPageUrl)
+                    }}>Next</button>}
+                </div>
+            
         </div>
 
 )
