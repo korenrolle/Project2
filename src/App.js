@@ -5,13 +5,16 @@ import Home from './Pages/Home'
 import {Routes, Route} from 'react-router-dom'
 import HOMELOGO from './RNMlogo.png'
 import Character from './Pages/Character';
+import Glossary from "./Pages/Glossary"
+import NavApp from './Components/navapp';
 
 function App() {
   return (
     <div className="App">
-      <img src={HOMELOGO} className="App-Logo" alt="Logo" />
+      <NavApp />
       <Routes>
         <Route path='/' element={<Home/>} />
+        <Route path="/glossary" element={<Glossary />} />
         <Route path="/game" element={<Character />} />
       </Routes>
     </div>
@@ -19,3 +22,7 @@ function App() {
 }
 
 export default App;
+
+/* 
+<img src={HOMELOGO} className="App-Logo" alt="Logo" />
+*/

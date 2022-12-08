@@ -1,6 +1,9 @@
 .App {
     text-align: center;
     background-color: #f9e009;
+    display: flex;
+    flex-direction: column;
+    max-width: 1300px;
     width: 100vw;
     height: 100vw;
   }
@@ -13,6 +16,8 @@
     cursor: pointer;
   }
 
+
+  
   @media (prefers-reduced-motion: no-preference) {
     .App-Logo {
       animation: zoom-in-zoom-out 4s ease infinite;
@@ -29,4 +34,20 @@
         transform: scale(1, 1)
       }
     }
+  }
+  
+  .nav-home {
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    padding: 15px;
+    font-size: 2em;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: -80px;
+}
+
+.nav-home a {
+    color: #62a4ab;
+    text-decoration: none;
   }
