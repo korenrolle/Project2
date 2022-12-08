@@ -1,3 +1,27 @@
-.game {
-    background-color: yellow;
+#game {
+  display: flex;
+  justify-content: center;
+  align-items: center ;
+}
+#char {
+    background-color: #f9e009;
+    display: block;
+    visibility: hidden;
   }
+  .questions {
+    height: 200px;
+    width: 200px;
+    background-color: Red;
+  }
+  #q1 {
+    height: 200px;
+    width: 200px;
+    justify-content: space-between;
+    margin-left: 765px;
+    margin-top: 100px;
+  }
+
+  .hidden {
+    background-color: #f9e009;
+    display: block;
+    visibility: hidden}
