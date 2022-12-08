@@ -6,10 +6,9 @@
     display: block;
     visibility: hidden;
   }
-  .questions {
-    height: 600px;
-    width: 600px;
-    background-color: Red;
+  #questions {
+width: 300px;
+height: 300x;
   }
   #q1 {
     height: 200px;
