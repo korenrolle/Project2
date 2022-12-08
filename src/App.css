@@ -1,7 +1,9 @@
 .App {
     text-align: center;
-    display: relative;
     background-color: #f9e009;
+    display: flex;
+    flex-direction: column;
+    max-width: 1300px;
     width: 100vw;
     height: 100vw;
   }
@@ -13,6 +15,8 @@
     margin-top: 20px;
     cursor: pointer;
   }
+
+
   
   @media (prefers-reduced-motion: no-preference) {
     .App-Logo {
@@ -32,3 +36,18 @@
     }
   }
   
+  .nav-home {
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    padding: 15px;
+    font-size: 2em;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: -80px;
+}
+
+.nav-home a {
+    color: #62a4ab;
+    text-decoration: none;
+  }

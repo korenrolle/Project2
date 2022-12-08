@@ -1,39 +1,58 @@
 import "./Glossary.css"
 import React, { useEffect, useState } from "react"
 import { Routes, Route } from "react-router-dom"
+import GlossaryTile from "./GlossaryTile"
 
 const Glossary = (props) => {
 
-    const [character, setCharacter] = useState(null)
-
-    async function fetchId() {
+    const [characterData, setCharacterData] = useState([])
+    const [loading, setLoading] = useState(true)
+    const URL = "https://rickandmortyapi.com/api/character"
+    
+    async function fetchData() {
         try {
-            const response = await fetch (`https://rickandmortyapi.com/api/character/1`)
-            const characterData = await response.json()
-            console.log(characterData)
-
-            setCharacter(characterData)
+            setLoading(true)
+            const response = await fetch (URL)
+            const Data = await response.json()
+            //console.log(Data.results)
+            setLoading(false)
+            fetchInfo(Data.results)
+            
+            
             
         } catch (err) {
             console.log(err)
         }
+        
     }
 
+    async function fetchInfo(Data) {
+        Data.map(async(item) => {
+            const respond = await fetch (item.url)
+            const charInfo = await respond.json()
+            //console.log(charInfo.name)
+            setCharacterData(state => {
+                state=[...state,charInfo]
+                return state
+            })
+          
+        })
+
+    }
+    
+    console.log(characterData)
+   
+
     useEffect(() => {
-        fetchId()
-    }, [])
+        fetchData()
+        
+    }, [URL])
+
+  
 
     return (
         <div className="Glossary-Page">
-            <h1>This is Glossary Page</h1>
-            <div>
-           { character ? 
-           <>
-           <img src={character.image} alt='quote' />
-           <h2>{character.name}</h2>
-           </>
-            : null}
-        </div>
+            <GlossaryTile character={characterData} loading={loading}/>
         </div>
 
 )
