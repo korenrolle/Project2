@@ -9,7 +9,6 @@ const Glossary = (props) => {
     const [characterData, setCharacterData] = useState([])
     const [loading, setLoading] = useState(true)
     const [URL, setURL] = useState("https://rickandmortyapi.com/api/character")
-    const [currentPageUrl, setCurrentPageUrl] = useState(URL)
     const [nextPageUrl, setNextPageUrl] = useState()
     const [prevPageUrl, setPrevPageUrl] = useState()
     
@@ -48,17 +47,18 @@ const Glossary = (props) => {
 
     }
     
-    console.log(characterData)
     
 
     useEffect(() => {
         fetchData()
         
     }, [URL])
+
   
 
     return (
         <div className="Glossary-Page">
+                <div className="pageNumber">  </div>
                 <GlossaryTile character={characterData} loading={loading}/>
                 <div className="prev-next">
                     { prevPageUrl && <button onClick={()=> {
@@ -75,4 +75,4 @@ const Glossary = (props) => {
 
 )
 }
-export default Glossary
+export default Glossary 

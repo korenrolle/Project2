@@ -17,7 +17,7 @@ const Home = (props) => {
             <div className="Home-Page">
                 <Routes>
                     <Route path="/glossary" element={<Glossary />} />
-                    <Route path="/game" element={<Character />} />
+                    <Route path="/character" element={<Character />} />
                 </Routes>
                 <Player className="video"/>
             </div>
