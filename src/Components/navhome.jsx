@@ -6,7 +6,7 @@ const NavHome = (props) => {
             <Link to="/glossary">
                 <div>Glossary</div>
             </Link>
-            <Link to="/game">
+            <Link to="/character">
                 <div>Game</div>
             </Link>
         </div>

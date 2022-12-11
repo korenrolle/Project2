@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 // import ReactPlayer from 'react-player';
 import '../Components/character.css';
 // import Game from './Game';
+import { Link } from 'react-router-dom';
 
 const Character = () => {
   const [character, setCharacter] = useState('');
@@ -68,6 +69,7 @@ const Character = () => {
     e.stopPropagation();
     e.target.value = '';
     setClickCount(clickCount + 1);
+    randoCharacter();
     if (clickCount === 3) {
       setIsVisible((current) => !current);
       setIsVisible1((current) => !current);
@@ -119,7 +121,7 @@ const Character = () => {
             <h2>{character.species}</h2>
             <h2>Character Classified as:{character.type}</h2>
             <h2>Character is still:{character.status}</h2>
-            <button>Start Over</button>
+            <Link to="/"> Start Over </Link>
           </div>
         </div>
       </div>
