@@ -75,4 +75,4 @@ const Glossary = (props) => {
 
 )
 }
-export default Glossary 
+export default Glossary
