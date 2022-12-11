@@ -6,6 +6,7 @@ import '../Components/character.css';
 const Character = () => {
   const [character, setCharacter] = useState('');
   const [isVisible, setIsVisible] = useState(true);
+  const [isVisible1, setIsVisible1] = useState(false);
 
   const arr = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21, 22,
@@ -49,7 +50,7 @@ const Character = () => {
     let data = await response.json(); // read
     setCharacter(data);
   }
-
+  console.log(character);
   const [name, setName] = useState('');
 
   const handleSubmit = (e) => {
@@ -69,6 +70,7 @@ const Character = () => {
     setClickCount(clickCount + 1);
     if (clickCount === 3) {
       setIsVisible((current) => !current);
+      setIsVisible1((current) => !current);
       console.log("That's enough");
     }
   }
@@ -106,15 +108,18 @@ const Character = () => {
               submit
             </button>
           </form>
-          <div id="char">
-            <img id="photo" src={character.image} alt="quote" />
+          <div
+            id="char"
+            style={{ visibility: isVisible1 ? 'visible' : 'hidden' }}
+          >
+            <img id="photo" src={character.image} alt="pic" />
             <h2>Name:{character.name}</h2>
             <h2>Character was Created:{character.created}</h2>
             <h2>Character is a: {character.gender}</h2>
             <h2>{character.species}</h2>
             <h2>Character Classified as:{character.type}</h2>
             <h2>Character is still:{character.status}</h2>
-            {/* <h2>Location:{character.location.name}</h2> */}
+            <button>Start Over</button>
           </div>
         </div>
       </div>
