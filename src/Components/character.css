@@ -1,15 +1,16 @@
-/* .game {
-  display: inline-block;
-} */
 #char {
-    background-color: #f9e009;
-    /* display: block; */
-    visibility: hidden;
-  }
+    display: flex;
+    flex-direction: column;
+    visibility: visible;
+    align-items: center;
+  } 
+/* .game {
+  display: flex
+}
   #questions {
 /* width: 300px;
 height: 300x; */
-  }
+  /* } */
   #q1 {
     /* height: 200px;
     width: 200px;
@@ -18,33 +19,28 @@ height: 300x; */
     margin-top: 100px; */
   }
 
-  .hidden {
+  /* .hidden {
     background-color: #f9e009;
     display: block;
-    visibility: hidden}
+    visibility: hidden} */
 
-    #questions1 {
+    /* #questions1 {
       display: flex;
       flex-direction: column;
-    }
-#questionRick {
+    } */
+/* #questionRick {
   height: 300px;
   width: 300px;
-}
-#innertext {
+} */
+/* #innertext {
 display: flex;
 margin-left: 200px;
-}
+} */
 #photo {
   height:200px;
   width:200px;
 }
-.newQuestion {
-  height: 300px;
-  width: 300px;
-  background-color: blueviolet;
-}
 
-.revealCharcter {
+/* .revealCharcter {
   visibility: visible;
-}
+} */

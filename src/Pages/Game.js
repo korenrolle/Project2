@@ -1,22 +1,18 @@
+// import React from 'react';
+// // import Character from './Character';
 
-
-// const Game = (props) => {
-//   const arr = [
-//     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20
-//   ];
-
-//   function RandoCharacter() {
-//     let randomLength = arr.length;
-
-//     let randomArray = Math.floor(Math.random() * randomLength);
-//     return randomArray;
-//   }
-//   console.log(RandoCharacter());
-
+// export default function Game(props) {
 //   return (
 //     <div>
-//       <form></form>
+//       <div>
+//         {/* <img src={props.image} alt="quote" />
+//         <h2>Character was Created:{props.created}</h2>
+//         <h2>Character is a: {props.gender}</h2>
+//         <h2>{props.species}</h2>
+//         <h2>Character Classified as:{props.type}</h2>
+//         <h2>Character is still:{props.status}</h2>
+//         <h2>Location:{props.location}</h2> */}
+//       </div>
 //     </div>
 //   );
-// };
-// export default Game;
+// }
