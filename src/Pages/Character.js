@@ -1,10 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 // import ReactPlayer from 'react-player';
 import '../Components/character.css';
+// import Game from './Game';
+import { Link } from 'react-router-dom';
 
-const Home = (props) => {
-  const [character, setCharacter] = useState(null);
-  const stop = document.getElementById('re');
+const Character = () => {
+  const [character, setCharacter] = useState('');
+  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible1, setIsVisible1] = useState(false);
 
   const arr = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21, 22,
@@ -16,11 +19,11 @@ const Home = (props) => {
     'If you had to choose between golf or football...sludge?',
     'What is 10 Morglorp, zenfied to the nearest Gelop?'
   ];
-  console.log();
+  // console.log();
 
-  function reveal({ className = 'revealCharacter' }) {
-    return (className = 'revealCharacter');
-  }
+  // function reveal({ className = 'revealCharacter' }) {
+  //   return (className = 'revealCharacter');
+  // }
   function randoCharacter() {
     let randomLength = arr.length;
     let randomArray = Math.floor(Math.random() * randomLength);
@@ -29,20 +32,26 @@ const Home = (props) => {
   console.log(randoCharacter());
 
   async function fetchId() {
-    try {
-      const response = await fetch(
-        `https://rickandmortyapi.com/api/character/${randoCharacter()}`
-      );
-      const characterData = await response.json();
-      console.log(characterData);
-      // const subbtn = document.getElementById('questionbtn');
+    // try {
+    //   const response = await fetch(
+    //     `https://rickandmortyapi.com/api/character/${randoCharacter()}`
+    //   );
+    //   const characterData = await response.json();
 
-      setCharacter(characterData);
-    } catch (err) {
-      console.log(err);
-    }
+    //   // const subbtn = document.getElementById('questionbtn');
+
+    //   setCharacter(characterData);
+    //   console.log(characterData);
+    // } catch (err) {
+    //   console.log(err);
+    // }
+    let url = `https://rickandmortyapi.com/api/character/${randoCharacter()}`;
+    let response = await fetch(url);
+
+    let data = await response.json(); // read
+    setCharacter(data);
   }
-
+  console.log(character);
   const [name, setName] = useState('');
 
   const handleSubmit = (e) => {
@@ -60,7 +69,10 @@ const Home = (props) => {
     e.stopPropagation();
     e.target.value = '';
     setClickCount(clickCount + 1);
+    randoCharacter();
     if (clickCount === 3) {
+      setIsVisible((current) => !current);
+      setIsVisible1((current) => !current);
       console.log("That's enough");
     }
   }
@@ -75,14 +87,17 @@ const Home = (props) => {
   // };
   // console.log(question);
 
-  // useEffect(() => {
-  //   fetchId();
-  // }, []);
+  useEffect(() => {
+    fetchId();
+  }, []);
 
   return (
-    <div className="game">
+    <div
+      style={{ visibility: isVisible ? 'visible' : 'hidden' }}
+      className="game"
+    >
       <h2 id="innertext">What Character are You?</h2>
-      {/* <div id="questionRick">{/* <img src={myGif} alt="my-gif" /> </div> */}
+      {/* <div id="questionRick"><img src={myGif} alt="my-gif" /> </div> */}
       <div id="questions">
         <div id="q1">
           {text}
@@ -95,44 +110,23 @@ const Home = (props) => {
               submit
             </button>
           </form>
+          <div
+            id="char"
+            style={{ visibility: isVisible1 ? 'visible' : 'hidden' }}
+          >
+            <img id="photo" src={character.image} alt="pic" />
+            <h2>Name:{character.name}</h2>
+            <h2>Character was Created:{character.created}</h2>
+            <h2>Character is a: {character.gender}</h2>
+            <h2>{character.species}</h2>
+            <h2>Character Classified as:{character.type}</h2>
+            <h2>Character is still:{character.status}</h2>
+            <Link to="/"> Start Over </Link>
+          </div>
         </div>
-        {/* <div id="q2">
-          <h2>'How long does it take you to drink a cup of water?'</h2>
-          <form onSubmit={handleSubmit}>
-            <input
-            // onChange={(e) => setName(e.target.value)}
-            // value={name}
-            ></input>
-          </form>
-        </div> */}
-        {/* <div id="q3">
-          <h2>"What is 10 Morglorp, zenfied to the nearest Gelop?"</h2>
-          <form onSubmit={handleSubmit}>
-            <input
-            // onChange={(e) => setName(e.target.value)}
-            // value={name}
-            ></input>
-          </form>
-        </div> */}
-        {/* <div id="q4">
-          <h2>'If you had to choose between golf or football...sludge?'</h2>
-          <form onSubmit={handleSubmit}>
-            
-          </form>
-        </div> */}
-        {/* <div id="char">
-          <img src={character.image} alt="quote" />
-          <h2>Name:{character.name}</h2>
-          <h2>Character was Created:{character.created}</h2>
-          <h2>Character is a: {character.gender}</h2>
-          <h2>{character.species}</h2>
-          <h2>Character Classified as:{character.type}</h2>
-          <h2>Character is still:{character.status}</h2>
-          <h2>Location:{character.location.name}</h2>
-        </div> */}
       </div>
     </div>
   );
 };
 
-export default Home;
+export default Character;
