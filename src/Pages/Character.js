@@ -4,13 +4,23 @@ import '../Components/character.css';
 
 const Home = (props) => {
   const [character, setCharacter] = useState(null);
+  const stop = document.getElementById('re');
 
   const arr = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21, 22,
     23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40
   ];
+  const questions = [
+    'Hey, What do they call you?',
+    'How long does it take you to drink a cup of water?',
+    'If you had to choose between golf or football...sludge?',
+    'What is 10 Morglorp, zenfied to the nearest Gelop?'
+  ];
   console.log();
 
+  function reveal({ className = 'revealCharacter' }) {
+    return (className = 'revealCharacter');
+  }
   function randoCharacter() {
     let randomLength = arr.length;
     let randomArray = Math.floor(Math.random() * randomLength);
@@ -25,61 +35,104 @@ const Home = (props) => {
       );
       const characterData = await response.json();
       console.log(characterData);
-      const subbtn = document.getElementById('questionbtn');
+      // const subbtn = document.getElementById('questionbtn');
 
       setCharacter(characterData);
     } catch (err) {
       console.log(err);
     }
   }
-  const onSubmit = (e) => {
-    e.preventDefault();
-  };
 
-  useEffect(() => {
-    fetchId();
-  }, []);
+  const [name, setName] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setName('');
+    console.log(`Form submitted, ${name}`);
+  };
+  const [i, incrementIndex] = useState(0);
+  const [text, setText] = useState(`${questions[i]}`);
+  const [clickCount, setClickCount] = useState(0);
+
+  function handleClick(e) {
+    setText(`${questions[i + 1]}`);
+    incrementIndex(i + 1);
+    e.stopPropagation();
+    e.target.value = '';
+    setClickCount(clickCount + 1);
+    if (clickCount === 3) {
+      console.log("That's enough");
+    }
+  }
+
+  //   return (
+  //     <div className="newQuestions">
+  //       {questions.map((question) => {
+  //         return <div>{question}</div>;
+  //       })}
+  //     </div>
+  //   );
+  // };
+  // console.log(question);
+
+  // useEffect(() => {
+  //   fetchId();
+  // }, []);
 
   return (
     <div className="game">
-      {/* <div id="questionRick">
-        <img src={myGif} alt="my-gif" />
-      </div> */}
-      {character ? (
-        <div id="questions">
-          <div id="q1">
-            {<h2>"What's your name?"</h2>}
-            <input></input>
-            <div id="q2">
-              {<h2>'How long does it take you to drink a cup of water?'</h2>}
-              <input></input>
-              <div id="q3">
-                {<h2>"What is 10 Morglorp, zenfied to the nearest Gelop?"</h2>}
-                <input></input>
-                {}
-                <div id="q4">
-                  <h2>
-                    'If you had to choose between golf or football...sludge?'
-                  </h2>
-                  <input></input>
-                  <button id="questionBtn"> submit</button>
-                  <div id="char">
-                    <img src={character.image} alt="quote" />
-                    <h2>Name:{character.name}</h2>
-                    <h2>Character was Created:{character.created}</h2>
-                    <h2>Character is a: {character.gender}</h2>
-                    <h2>{character.species}</h2>
-                    <h2>Character Classified as:{character.type}</h2>
-                    <h2>Character is still:{character.status}</h2>
-                    <h2>Location:{character.location.name}</h2>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+      <h2 id="innertext">What Character are You?</h2>
+      {/* <div id="questionRick">{/* <img src={myGif} alt="my-gif" /> </div> */}
+      <div id="questions">
+        <div id="q1">
+          {text}
+          <form onSubmit={handleSubmit}>
+            <input
+              onChange={(e) => setName(e.target.value)}
+              value={name}
+            ></input>
+            <button type="submit" onClick={handleClick}>
+              submit
+            </button>
+          </form>
         </div>
-      ) : null}
+        {/* <div id="q2">
+          <h2>'How long does it take you to drink a cup of water?'</h2>
+          <form onSubmit={handleSubmit}>
+            <input
+            // onChange={(e) => setName(e.target.value)}
+            // value={name}
+            ></input>
+          </form>
+        </div> */}
+        {/* <div id="q3">
+          <h2>"What is 10 Morglorp, zenfied to the nearest Gelop?"</h2>
+          <form onSubmit={handleSubmit}>
+            <input
+            // onChange={(e) => setName(e.target.value)}
+            // value={name}
+            ></input>
+          </form>
+        </div> */}
+        {/* <div id="q4">
+          <h2>'If you had to choose between golf or football...sludge?'</h2>
+          <form onSubmit={handleSubmit}>
+            
+          </form>
+        </div> */}
+        {/* <div id="char">
+          <img src={character.image} alt="quote" />
+          <h2>Name:{character.name}</h2>
+          <h2>Character was Created:{character.created}</h2>
+          <h2>Character is a: {character.gender}</h2>
+          <h2>{character.species}</h2>
+          <h2>Character Classified as:{character.type}</h2>
+          <h2>Character is still:{character.status}</h2>
+          <h2>Location:{character.location.name}</h2>
+        </div> */}
+      </div>
     </div>
   );
 };
+
 export default Home;
