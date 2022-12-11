@@ -1,21 +1,21 @@
-#game {
+/* .game {
   display: inline-block;
-}
+} */
 #char {
     background-color: #f9e009;
-    display: block;
+    /* display: block; */
     visibility: hidden;
   }
   #questions {
-width: 300px;
-height: 300x;
+/* width: 300px;
+height: 300x; */
   }
   #q1 {
-    height: 200px;
+    /* height: 200px;
     width: 200px;
     justify-content: space-between;
     margin-left: 765px;
-    margin-top: 100px;
+    margin-top: 100px; */
   }
 
   .hidden {
@@ -30,4 +30,21 @@ height: 300x;
 #questionRick {
   height: 300px;
   width: 300px;
+}
+#innertext {
+display: flex;
+margin-left: 200px;
+}
+#photo {
+  height:200px;
+  width:200px;
+}
+.newQuestion {
+  height: 300px;
+  width: 300px;
+  background-color: blueviolet;
+}
+
+.revealCharcter {
+  visibility: visible;
 }
