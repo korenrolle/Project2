@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
-// import ReactPlayer from 'react-player';
 import '../Components/character.css';
-// import Game from './Game';
 import { Link } from 'react-router-dom';
+// Image
 
 const Character = () => {
   const [character, setCharacter] = useState('');
@@ -19,45 +18,25 @@ const Character = () => {
     'If you had to choose between golf or football...sludge?',
     'What is 10 Morglorp, zenfied to the nearest Gelop?'
   ];
-  // console.log();
-
-  // function reveal({ className = 'revealCharacter' }) {
-  //   return (className = 'revealCharacter');
-  // }
   function randoCharacter() {
     let randomLength = arr.length;
     let randomArray = Math.floor(Math.random() * randomLength);
     return randomArray;
   }
-  console.log(randoCharacter());
+  randoCharacter();
 
   async function fetchId() {
-    // try {
-    //   const response = await fetch(
-    //     `https://rickandmortyapi.com/api/character/${randoCharacter()}`
-    //   );
-    //   const characterData = await response.json();
-
-    //   // const subbtn = document.getElementById('questionbtn');
-
-    //   setCharacter(characterData);
-    //   console.log(characterData);
-    // } catch (err) {
-    //   console.log(err);
-    // }
     let url = `https://rickandmortyapi.com/api/character/${randoCharacter()}`;
     let response = await fetch(url);
 
-    let data = await response.json(); // read
+    let data = await response.json();
     setCharacter(data);
   }
-  console.log(character);
   const [name, setName] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setName('');
-    console.log(`Form submitted, ${name}`);
   };
   const [i, incrementIndex] = useState(0);
   const [text, setText] = useState(`${questions[i]}`);
@@ -73,20 +52,8 @@ const Character = () => {
     if (clickCount === 3) {
       setIsVisible((current) => !current);
       setIsVisible1((current) => !current);
-      console.log("That's enough");
     }
   }
-
-  //   return (
-  //     <div className="newQuestions">
-  //       {questions.map((question) => {
-  //         return <div>{question}</div>;
-  //       })}
-  //     </div>
-  //   );
-  // };
-  // console.log(question);
-
   useEffect(() => {
     fetchId();
   }, []);
@@ -97,17 +64,22 @@ const Character = () => {
       className="game"
     >
       <h2 id="innertext">What Character are You?</h2>
-      {/* <div id="questionRick"><img src={myGif} alt="my-gif" /> </div> */}
       <div id="questions">
         <div id="q1">
           {text}
           <form onSubmit={handleSubmit}>
             <input
+              id="input"
               onChange={(e) => setName(e.target.value)}
               value={name}
             ></input>
-            <button type="submit" onClick={handleClick}>
-              submit
+            <button
+              className="btnStyle"
+              disabled={name.length < 1}
+              type="submit"
+              onClick={handleClick}
+            >
+              <h2>submit</h2>
             </button>
           </form>
           <div

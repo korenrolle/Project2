@@ -7,6 +7,7 @@ import HOMELOGO from './RNMlogo.png';
 import Character from './Pages/Character';
 import Glossary from './Pages/Glossary';
 import NavApp from './Components/navapp';
+import './font/get_schwifty.ttf';
 
 function App() {
   return (
