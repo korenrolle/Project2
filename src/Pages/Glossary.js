@@ -9,15 +9,17 @@ const Glossary = (props) => {
     const [characterData, setCharacterData] = useState([])
     const [loading, setLoading] = useState(true)
     const [URL, setURL] = useState("https://rickandmortyapi.com/api/character?page=1")
-    const [currentPage, setCurrentPage] = useState()
+    
     const [nextPageUrl, setNextPageUrl] = useState()
     const [prevPageUrl, setPrevPageUrl] = useState()
+
+    const [currentPage, setCurrentPage] = useState(1)
+
     const Pages = []
 
-    for (let i = 1; i < 43; i++){
+    for (let i = 1; i < 43; i++) {
         Pages.push(i)
     }
-    console.log(Pages)
     
     async function fetchData() {
         try {
@@ -44,25 +46,14 @@ const Glossary = (props) => {
             const respond = await fetch (item.url)
             const charInfo = await respond.json()
             //console.log(charInfo.name)
-            setCharacterData(state => {
-                state=[...state,charInfo]
-                return state
+            setCharacterData(list => {
+                list=[...list,charInfo]
+                return list
             })
           
         })
 
     }
-    
-    const handleClick = () => {
-        for (let i = 1; i < Pages; i++){
-            
-            const Num = i
-            console.log(`this console is ${i}`)
-           // setCurrentPage(`https://rickandmortyapi.com/api/character?page=${i}`)
-        }
-        
-    }
-    handleClick()
     
 
     useEffect(() => {
@@ -73,13 +64,31 @@ const Glossary = (props) => {
     console.log(`current is ${URL}`)
     console.log(`prev is ${prevPageUrl}`)
     console.log(`next is ${nextPageUrl}`)
+    console.log(`current page is ${currentPage}`)
+
+    const paginate = pageNumber => setCurrentPage(pageNumber);
 
 
     return (
         <div className="Glossary-Page">
-                {Pages.map((Page, index) => {
-                    return <button key={index} >{Page}</button>
-                })}
+                <nav className="navigation_wrapper">
+                    <ul className='pagination'>
+                    {Pages.map(page => (
+                        <li key={page} className='page-item'>
+                        <a onClick={() => {
+                            setCharacterData([])
+                            setURL(`https://rickandmortyapi.com/api/character?page=${parseInt(page)}`)
+                        }
+                            
+                            } 
+                            href='javascript:' className='page-link'>
+                            {page}
+                        </a>
+                 
+                        </li>
+                        ))}
+                    </ul>
+                </nav>
                 <GlossaryTile character={characterData} loading={loading}/>
                 <div className="prev-next">
                     { prevPageUrl && <button onClick={()=> {
