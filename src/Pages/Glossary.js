@@ -8,16 +8,22 @@ const Glossary = (props) => {
 
     const [characterData, setCharacterData] = useState([])
     const [loading, setLoading] = useState(true)
-    const [URL, setURL] = useState("https://rickandmortyapi.com/api/character")
+    const [URL, setURL] = useState("https://rickandmortyapi.com/api/character?page=1")
+    const [currentPage, setCurrentPage] = useState()
     const [nextPageUrl, setNextPageUrl] = useState()
     const [prevPageUrl, setPrevPageUrl] = useState()
+    const Pages = []
+
+    for (let i = 1; i < 43; i++){
+        Pages.push(i)
+    }
+    console.log(Pages)
     
     async function fetchData() {
         try {
             setLoading(true)
             const response = await fetch (URL)
             const Data = await response.json()
-            //console.log(Data.results)
 
             setLoading(false)
             fetchInfo(Data.results)
@@ -47,6 +53,16 @@ const Glossary = (props) => {
 
     }
     
+    const handleClick = () => {
+        for (let i = 1; i < Pages; i++){
+            
+            const Num = i
+            console.log(`this console is ${i}`)
+           // setCurrentPage(`https://rickandmortyapi.com/api/character?page=${i}`)
+        }
+        
+    }
+    handleClick()
     
 
     useEffect(() => {
@@ -54,11 +70,16 @@ const Glossary = (props) => {
         
     }, [URL])
 
-  
+    console.log(`current is ${URL}`)
+    console.log(`prev is ${prevPageUrl}`)
+    console.log(`next is ${nextPageUrl}`)
+
 
     return (
         <div className="Glossary-Page">
-                <div className="pageNumber">  </div>
+                {Pages.map((Page, index) => {
+                    return <button key={index} >{Page}</button>
+                })}
                 <GlossaryTile character={characterData} loading={loading}/>
                 <div className="prev-next">
                     { prevPageUrl && <button onClick={()=> {
