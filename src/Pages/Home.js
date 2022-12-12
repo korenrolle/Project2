@@ -2,6 +2,7 @@ import './Home.css';
 import React, { useEffect, useState } from 'react';
 import Player from '../Components/Player';
 import { Routes, Route } from 'react-router-dom';
+import Portal from '../Portal.png'
 import Character from './Character';
 import NavHome from '../Components/navhome';
 import Glossary from './Glossary';
@@ -13,9 +14,12 @@ const Home = (props) => {
       <div className="Home-Page">
         <Routes>
           <Route path="/glossary" element={<Glossary />} />
-          <Route path="/character" element={<Character />} />
+          <Route path="/game" element={<Character />} />
         </Routes>
         <Player className="video" />
+        <img src={Portal} className="portal-logo" />
+        
+
       </div>
     </nav>
   );

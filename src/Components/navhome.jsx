@@ -3,12 +3,16 @@ import { Link } from 'react-router-dom'
 const NavHome = (props) => {
     return (
         <div className="nav-home">
-            <Link to="/glossary">
-                <div>Glossary</div>
+            <Link to="/game">
+                <div>Play a Game</div>
             </Link>
-            <Link to="/character">
-                <div>Game</div>
+            <Link to="/glossary ">
+                <div>Meet the Cast</div>
             </Link>
+            <Link to="/about-us ">
+                <div>About Us</div>
+            </Link>
+            
         </div>
     );
 };

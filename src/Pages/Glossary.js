@@ -66,40 +66,36 @@ const Glossary = (props) => {
     console.log(`next is ${nextPageUrl}`)
     console.log(`current page is ${currentPage}`)
 
-    const paginate = pageNumber => setCurrentPage(pageNumber);
-
 
     return (
         <div className="Glossary-Page">
-                <nav className="navigation_wrapper">
-                    <ul className='pagination'>
-                    {Pages.map(page => (
-                        <li key={page} className='page-item'>
-                        <a onClick={() => {
-                            setCharacterData([])
-                            setURL(`https://rickandmortyapi.com/api/character?page=${parseInt(page)}`)
+                <nav className="list-container">
+                    <div className='page-list'>
+                        {Pages.map((page) => {
+                            return (
+                                <button key={page} className='page-tile'
+                                    onClick={() => {
+                                        setCharacterData([])
+                                        setURL(`https://rickandmortyapi.com/api/character?page=${parseInt(page)}`)
+                                        }} >{page}</button>
+                            )
                         }
-                            
-                            } 
-                            href='javascript:' className='page-link'>
-                            {page}
-                        </a>
-                 
-                        </li>
-                        ))}
-                    </ul>
+                        )}
+                    </div>
                 </nav>
-                <GlossaryTile character={characterData} loading={loading}/>
+                
                 <div className="prev-next">
-                    { prevPageUrl && <button onClick={()=> {
+                    { prevPageUrl && <button className="prev-next-button" onClick={()=> {
                         setCharacterData([])
                         setURL(prevPageUrl)
                     }}>Previous</button>}
-                    { nextPageUrl && <button onClick={()=> {
+                    { nextPageUrl && <button className="prev-next-button" onClick={()=> {
                         setCharacterData([])
                         setURL(nextPageUrl)
                     }}>Next</button>}
                 </div>
+                
+                <GlossaryTile character={characterData} loading={loading}/>
             
         </div>
 

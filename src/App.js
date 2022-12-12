@@ -3,7 +3,6 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import Home from './Pages/Home';
 import { Routes, Route } from 'react-router-dom';
-import HOMELOGO from './RNMlogo.png';
 import Character from './Pages/Character';
 import Glossary from './Pages/Glossary';
 import NavApp from './Components/navapp';
@@ -16,7 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/glossary" element={<Glossary />} />
-        <Route path="/character" element={<Character />} />
+        <Route path="/game" element={<Character />} />
       </Routes>
     </div>
   );

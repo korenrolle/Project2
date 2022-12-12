@@ -1,3 +1,8 @@
+@font-face {
+  font-family: customFont;
+  src: url(./font/get-schwifty-2.ttf);
+}
+
 .App {
     text-align: center;
     background-color: #f9e009;
@@ -38,22 +43,29 @@
   
   .nav-home {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     color: white;
     padding: 15px;
-    font-size: 2em;
-    margin-left: 50px;
-    margin-right: 50px;
-    margin-top: -80px;
+    margin-top: 10px;
 }
 
 .nav-home a {
     color: #62a4ab;
     text-decoration: none;
+    font-family: customFont;
+    font-size: 30px;
+    font-weight: bold;
+    text-shadow: 1px 1px black;
+    transition: 0.5s;
+    
   }
 
-  @font-face {
-    font-family: "schwifty";
-    src: local("schwifty") url(./font/get_schwifty.ttf) format("truetype");
+  .nav-home a:hover {
+    color: #62a4ab;
+    text-decoration: none;
+    font-family: customFont;
+    font-size: 40px;
+    font-weight: bold;
+    text-shadow: 2px 2px black;
+    
   }
-  
