@@ -1,25 +1,22 @@
-import React from "react";
+import React, {useState} from "react";
 
-const NavApp = ({character,loading}) => {
+const GlossaryTile = ({character,loading, characterInfo}) => {
     return (
         <div className="tile-container">
             {loading ? <h1>Loading...</h1> : character.map((item) => {
                 return(
                     <>
-                        <div className="tile">
+                        <div className="tile" key={item.id}>
                             <img src={item.image} className="tile-picture" />
                             <h2 className="tile-info">{item.name}</h2>
 
                         </div>
                     </>
+                    
                 )
             })}
         </div>
     )
 };
 
-export default NavApp;
-
-/*
-
-*/
+export default GlossaryTile;

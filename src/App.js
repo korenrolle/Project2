@@ -5,6 +5,7 @@ import Home from './Pages/Home';
 import { Routes, Route } from 'react-router-dom';
 import Character from './Pages/Character';
 import Glossary from './Pages/Glossary';
+import AboutUs from './Pages/about-us';
 import NavApp from './Components/navapp';
 import './font/get_schwifty.ttf';
 
@@ -16,13 +17,10 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/glossary" element={<Glossary />} />
         <Route path="/game" element={<Character />} />
+        <Route path="/about-us" element={<AboutUs />} />
       </Routes>
     </div>
   );
 }
 
 export default App;
-
-/* 
-<img src={HOMELOGO} className="App-Logo" alt="Logo" />
-*/

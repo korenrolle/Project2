@@ -6,6 +6,7 @@ import Portal from '../Portal.png'
 import Character from './Character';
 import NavHome from '../Components/navhome';
 import Glossary from './Glossary';
+import AboutUs from './about-us';
 
 const Home = (props) => {
   return (
@@ -15,6 +16,7 @@ const Home = (props) => {
         <Routes>
           <Route path="/glossary" element={<Glossary />} />
           <Route path="/game" element={<Character />} />
+          <Route path="/about-us" element={<AboutUs />} />
         </Routes>
         <Player className="video" />
         <img src={Portal} className="portal-logo" />

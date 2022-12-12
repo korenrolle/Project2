@@ -7,13 +7,11 @@ import GlossaryTile from "./GlossaryTile"
 const Glossary = (props) => {
 
     const [characterData, setCharacterData] = useState([])
+    const [characterInfo, setCharacterInfo] = useState()
     const [loading, setLoading] = useState(true)
     const [URL, setURL] = useState("https://rickandmortyapi.com/api/character?page=1")
-    
     const [nextPageUrl, setNextPageUrl] = useState()
     const [prevPageUrl, setPrevPageUrl] = useState()
-
-    const [currentPage, setCurrentPage] = useState(1)
 
     const Pages = []
 
@@ -29,7 +27,6 @@ const Glossary = (props) => {
 
             setLoading(false)
             fetchInfo(Data.results)
-            console.log(Data.info)
             setNextPageUrl(Data.info.next)
             setPrevPageUrl(Data.info.prev)
             
@@ -45,7 +42,6 @@ const Glossary = (props) => {
         Data.map(async(item) => {
             const respond = await fetch (item.url)
             const charInfo = await respond.json()
-            //console.log(charInfo.name)
             setCharacterData(list => {
                 list=[...list,charInfo]
                 return list
@@ -55,16 +51,10 @@ const Glossary = (props) => {
 
     }
     
-
     useEffect(() => {
         fetchData()
         
     }, [URL])
-
-    console.log(`current is ${URL}`)
-    console.log(`prev is ${prevPageUrl}`)
-    console.log(`next is ${nextPageUrl}`)
-    console.log(`current page is ${currentPage}`)
 
 
     return (
@@ -83,7 +73,6 @@ const Glossary = (props) => {
                         )}
                     </div>
                 </nav>
-                
                 <div className="prev-next">
                     { prevPageUrl && <button className="prev-next-button" onClick={()=> {
                         setCharacterData([])
@@ -94,11 +83,12 @@ const Glossary = (props) => {
                         setURL(nextPageUrl)
                     }}>Next</button>}
                 </div>
-                
-                <GlossaryTile character={characterData} loading={loading}/>
+                <GlossaryTile character={characterData} loading={loading} characterInfo={char=>setCharacterInfo(char)}/>
+               
             
         </div>
 
 )
 }
 export default Glossary
+

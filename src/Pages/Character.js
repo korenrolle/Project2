@@ -88,7 +88,6 @@ const Character = () => {
           >
             <img id="photo" src={character.image} alt="pic" />
             <h2>Name:{character.name}</h2>
-            <h2>Character was Created:{character.created}</h2>
             <h2>Character is a: {character.gender}</h2>
             <h2>{character.species}</h2>
             <h2>Character Classified as:{character.type}</h2>
